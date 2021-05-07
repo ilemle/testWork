@@ -1,44 +1,44 @@
-function remover(elem){ //удаляет всё кроме шапки и подвала
-    elem.forEach(function(node){
-        if(node.nodeName=='#text'){
-        }
-        else{
-             if(node.getAttribute("class")=="header"||node.getAttribute("class")=="footer"){
-                }
-            else{
-                node.remove();
-            }
-        }
-    })
+function remover(elem) {
+  //удаляет всё кроме шапки и подвала
+  elem.forEach(function (node) {
+    if (node.nodeName == "#text") {
+    } else {
+      if (
+        node.getAttribute("class") == "header" ||
+        node.getAttribute("class") == "footer"
+      ) {
+      } else {
+        node.remove();
+      }
+    }
+  });
 }
 
-function autorise(){
-    let mainElArray=document.querySelector('.flexAir').childNodes;
+function autorise() {
+  let mainElArray = document.querySelector(".flexAir").childNodes;
 
-    let div=document.createElement('div');
-    div.className='autoriseForm';
-    div.innerHTML=`<form class="forma">
+  let div = document.createElement("div");
+  div.className = "autoriseForm";
+  div.innerHTML = `<form class="forma">
     <div class="autoriseH3">Авторизация<div> 
     <input class="inputWork1" type="text"></input> 
     <div><button class="autoriseButton" type="button" onclick="setAutoriseName()">отправить</button></div>
-    </form>`
-    remover(mainElArray);
-    document.querySelector('.header').after(div);
+    </form>`;
+  remover(mainElArray);
+  document.querySelector(".header").after(div);
 }
 
-
-function setAutoriseName(){
-    const currentName=document.querySelector('.inputWork1').value;
-    let name=document.querySelector('.userName');
-    name.innerHTML=`Привет ${currentName}`;
-    setMainMenu()
+function setAutoriseName() {
+  const currentName = document.querySelector(".inputWork1").value;
+  let name = document.querySelector(".userName");
+  name.innerHTML = `Привет ${currentName}`;
+  setMainMenu();
 }
 
-
-function setMainMenu(){
-    let mainElArray=document.querySelector('.flexAir').childNodes;
-    remover(mainElArray);
-    let mainContent=`
+function setMainMenu() {
+  let mainElArray = document.querySelector(".flexAir").childNodes;
+  remover(mainElArray);
+  let mainContent = `
     <section class="isCool">
         <div class="isCoolText">
            <p> Стажировка это круто!</p>
@@ -119,19 +119,19 @@ function setMainMenu(){
             </ul>
         </div>
     </section>
-    `
-    let div=document.createElement('div');
-    div.innerHTML=mainContent
-    document.querySelector('.header').after(div);
+    `;
+  let div = document.createElement("div");
+  div.innerHTML = mainContent;
+  document.querySelector(".header").after(div);
 }
 ////work 3
 
-function setCurtains(){
-    let mainElArray=document.querySelector('.flexAir').childNodes;
-    remover(mainElArray);
-    let div=document.createElement('div');
-    div.className='accordionClass';
-    let mainContent=`
+function setCurtains() {
+  let mainElArray = document.querySelector(".flexAir").childNodes;
+  remover(mainElArray);
+  let div = document.createElement("div");
+  div.className = "accordionClass";
+  let mainContent = `
     <div class="headingWork3">Популярные вопросы</div>
     <button class="accordion">А вы вообще в курсе, что большой палец и мизинец одного размера?</button>
     <div class="panel">
@@ -183,75 +183,71 @@ function setCurtains(){
     <div class="panel">
         <p>Я боюсь за свою контекстную рекламу, после того что я гуглил для этой работы...</p>
     </div>
-    `
-    div.innerHTML=mainContent;
-    document.querySelector('.header').after(div);
+    `;
+  div.innerHTML = mainContent;
+  document.querySelector(".header").after(div);
 
-    var accordionArray=document.querySelectorAll('.accordion');
-    for (let i = 0; i < accordionArray.length; i++) {
-       accordionArray[i].addEventListener('click',function(){
-
-           let hidePanel=this.nextElementSibling;
-           if(hidePanel.style.maxHeight){
-            hidePanel.style.maxHeight = null;
-           }
-           else{
-            hidePanel.style.maxHeight = hidePanel.scrollHeight+"px";
-           }
-
-       })
-    }
+  var accordionArray = document.querySelectorAll(".accordion");
+  for (let i = 0; i < accordionArray.length; i++) {
+    accordionArray[i].addEventListener("click", function () {
+      let hidePanel = this.nextElementSibling;
+      if (hidePanel.style.maxHeight) {
+        hidePanel.style.maxHeight = null;
+      } else {
+        hidePanel.style.maxHeight = hidePanel.scrollHeight + "px";
+      }
+    });
+  }
 }
 
 ////4
 function getRandomIntInclusive(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function getMaxRandom(){
-    let mainElArray=document.querySelector('.flexAir').childNodes;
-    remover(mainElArray);
-    let div=document.createElement('div');
-    div.className='randomNumbers';
+function getMaxRandom() {
+  let mainElArray = document.querySelector(".flexAir").childNodes;
+  remover(mainElArray);
+  let div = document.createElement("div");
+  div.className = "randomNumbers";
 
-    let randomNumbersArray=[];
-    for (let i = 0; i < 10; i++) {
-        randomNumbersArray[i]=getRandomIntInclusive(0,100)
-    }
+  let randomNumbersArray = [];
+  for (let i = 0; i < 10; i++) {
+    randomNumbersArray[i] = getRandomIntInclusive(0, 100);
+  }
 
-    const postArray=randomNumbersArray.slice('');
-    postArray.sort(function(a,b){ 
-        return b-a
-      })
-    
-    const maxFreeNumbersArray=[];
-    for (let i = 0; i < 3; i++) {
-        maxFreeNumbersArray[i]=postArray[i];
-    }
-    
-    div.innerHTML=`
+  const postArray = randomNumbersArray.slice("");
+  postArray.sort(function (a, b) {
+    return b - a;
+  });
+
+  const maxFreeNumbersArray = [];
+  for (let i = 0; i < 3; i++) {
+    maxFreeNumbersArray[i] = postArray[i];
+  }
+
+  div.innerHTML = `
     <div>
     <div class='headingForRandom'>Массив чисел:</div>
     <div class='numbers'>${randomNumbersArray}</div>
     <div class='headingForRandom'>Наибольшие три:</div>
     <div class='numbers'>${maxFreeNumbersArray}</div>
     </div>
-    `
-    document.querySelector('.header').after(div);
-
+    `;
+  document.querySelector(".header").after(div);
 }
 
 //5
 
-function katalog(){
-    let mainElArray=document.querySelector('.flexAir').childNodes;
-    remover(mainElArray);
-    let div=document.createElement('div');
-    div.className='katalog';
+function katalog() {
+  let mainElArray = document.querySelector(".flexAir").childNodes;
+  remover(mainElArray);
+  let div = document.createElement("div");
+  div.className = "katalog";
 
-    div.innerHTML=`
+  div.innerHTML = `
     <ul >
     <li ><div data-number="1">1.Главная</div></li>
     <li ><div data-number="2">2.Каталог</div>
@@ -285,100 +281,98 @@ function katalog(){
 
     <input placeholder="Введите номер раздела"></input>
     <div><button type="button" onclick="get_breadcrumbs()">Найти</button></div>
-    `
-    document.querySelector('.header').after(div);
-
+    `;
+  document.querySelector(".header").after(div);
 }
 
 // function get_breadcrumbs(){
 //     const num=document.querySelector('.katalog input').value;
-//     const elemUl=document.querySelector('.katalog '); 
+//     const elemUl=document.querySelector('.katalog ');
 
 //     if(elemUl.nextElementSibling==null){
 
 //     }
-    
+
+// }
+////////////
+// const breadArray = [];
+// function DOMComb(oParent, num) {
+//   const reEx = /{0-9}/;
+//   if (oParent.hasChildNodes()) {
+//     for (var oNode = oParent.firstChild; oNode; oNode = oNode.nextSibling) {
+//       if (oNode.innerHTML === reEx);
+//       {
+//         console.log(oNode.innerHTML);
+//       }
+//       //  console.log(oNode.innerHTML);
+//       if (oParent.getAttribute("data-number") === num) {
+//         oParent.style.backgroundColor = "lightgrey";
+//         break;
+//       }
+//       DOMComb(oNode, num);
+//     }
+//   }
 // }
 
-const breadArray=[];
-function DOMComb (oParent,num) {
-    const reEx=/{0-9}/;
-    if (oParent.hasChildNodes()) {
-      for (var oNode = oParent.firstChild; oNode; oNode = oNode.nextSibling) {
-        if(oNode.innerHTML===reEx);{
-            console.log(oNode.innerHTML)
-        }
-      //  console.log(oNode.innerHTML);
-        if(oParent.getAttribute('data-number')===num){
-            oParent.style.backgroundColor='lightgrey';
-            break;
-        }  
-        DOMComb(oNode,num);
-      }
-    }
-   
-  }
+// function get_breadcrumbs() {
+//   const elemUl = document.querySelector(".katalog ");
+//   const num = document.querySelector(this).value;
 
-function  get_breadcrumbs(){
-    const elemUl=document.querySelector('.katalog ');
-    const num=document.querySelector('.katalog input').value;
+//   DOMComb(elemUl, num);
+// }
 
-    DOMComb(elemUl,num);
-}
+
+
 
 
 //6
 
-
-// async function sendRequest (url){
-//     let result=null;
-//     const response= await fetch(url);
-//     console.log(response.json());
-//     return response.json();
-//     // .then(response=>{response.json()})
-//     // .then(data=>{result=data;console.log(result)})
-//     // .then(console.log(result));
-
+// function sendRequest(url) {
+//   let result = null;
+//   fetch(url)
+//     .then((response) => {
+//       return response.json();
+//     })
+//     .then((data) => {
+//       result = data;
+//       console.log("В запросе ", result);
+//       return result;
+//     });
 // }
-async function sendRequest (url){
-    let result=null;
-    fetch(url)
-    .then((response)=> {
-    return response.json()
-    })
-    .then( (data)=>{
-    result= data;
-    console.log('В запросе ',result);
-    return result;
-    })
- }
-
-
- function weather (){
-// const url=`https://jsonplaceholder.typicode.com/users`;
-const url=`
-http://api.openweathermap.org/data/2.5/weather?q=Чебоксары&lang=ru&appid=caef64f0563d8064f064787ec1b3fe53
-`;
-
-data= sendRequest(url);
-console.log('Вызов самой функции',sendRequest(url));
-console.log('В функции вызывающей запрос', data);
+function getDataRequest(url) {
+  return fetch(url).then((response) => response.json());
 }
 
-function getWeatherBlock(){
-    let mainElArray=document.querySelector('.flexAir').childNodes;
-    remover(mainElArray);
-    let div=document.createElement('div');
-    div.className='weatherBlock';
+async function weather() {
+  //const url = `https://jsonplaceholder.typicode.com/users`;
+  const sity = document.querySelector(".inputSity").value;
+  const url = `
+  http://api.openweathermap.org/data/2.5/weather?q=${sity}&lang=ru&appid=caef64f0563d8064f064787ec1b3fe53
+  `;
 
-    div.innerHTML=`
+  let data = null;
+  data = await getDataRequest(url);
+
+  let tempK = data.main.temp;
+  const tempC = (tempK - 273.15).toFixed(1);
+  console.log(tempC);
+
+  weatherDataBlock = document.querySelector(".weatherData");
+  weatherDataBlock.innerHTML = `В городе ${sity} текущая температура ${tempC}`;
+}
+
+function getWeatherBlock() {
+  let mainElArray = document.querySelector(".flexAir").childNodes;
+  remover(mainElArray);
+  let div = document.createElement("div");
+
+  div.className = "weatherBlock";
+  div.innerHTML = `
     <div>
-        <button onclick="weather()">get weather</button>
+        <input class="inputSity" placeholder="введите город" > </input>
+        <button class='weatherBlockButton' onclick="weather()">узнать погоду</button>
+        <div class="weatherData">  </div>
     </div>
-    `
-    document.querySelector('.header').after(div);
-
+    `;
+  document.querySelector(".header").after(div);
 }
-
-
-
